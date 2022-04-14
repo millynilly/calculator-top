@@ -1,0 +1,60 @@
+
+:root {
+    --sqr: 50px;
+    --gap: 10px;
+    --width: calc(var(--sqr)*4 + var(--gap)*2 + 40px)
+}
+
+
+body {
+    font-family: 'Red hat mono', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+button {
+    width: var(--sqr);
+    height: var(--sqr);
+    font-family: 'Red hat mono', sans-serif;
+    font-size: 20px;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: var(--width);
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+#display {
+    width: calc(var(--width) - 32px);
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 16px;
+}
+
+#main {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+#numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+#operators {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
