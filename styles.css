@@ -1,13 +1,14 @@
 
 :root {
-    --sqr: 50px;
-    --gap: 10px;
+    --sqr: 60px;
+    --gap: 12px;
     --width: calc(var(--sqr)*4 + var(--gap)*2 + 40px)
 }
 
 
 body {
     font-family: 'Red hat mono', sans-serif;
+    font-size: 20px;
 }
 
 h1 {
@@ -35,14 +36,21 @@ button {
 
 #display {
     width: calc(var(--width) - 32px);
+    height: var(--sqr);
+    line-height: var(--sqr);
     border: 1px solid black;
     border-radius: 2px;
-    padding: 16px;
+    padding: 0 16px;
+}
+
+#functions {
+    display: flex;
+    justify-content: space-between;
 }
 
 #main {
     display: flex;
-    gap: 40px;
+    gap: 43px;
     align-items: flex-start;
 }
 
