@@ -25,7 +25,7 @@ function operate(a, b, operator) {
         case '*':
             return (a * b).toString()            
         case '/':
-            return divide(a, b).toString()           
+            return b === 0 ? 'error: divide by zero' : divide(a, b).toString()           
     }
 }
 
@@ -75,7 +75,9 @@ function updateDisplay(str) {
             }
             break
     }
+    
     screen.textContent = b === null ? a : b
+    if (a === 'error: divide by zero') { a = null }
     console.log(a, b, op)
 }
 
