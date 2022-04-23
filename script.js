@@ -1,18 +1,15 @@
 const screen = document.querySelector('#display')
-const dVal ='0.'
 const btns = document.querySelectorAll('button')
 
 let a = null
 let b = null
 let op = null
+let decimal = false
 
 
 /*Event listener for all buttons*/
 btns.forEach( btn => {
     btn.addEventListener('click', n => updateDisplay(btn.textContent))})
-
-
-function divide(a, b) { return b == 0 ? null : a / b }
 
 
 function operate(a, b, operator) {
@@ -25,10 +22,9 @@ function operate(a, b, operator) {
         case '*':
             return (a * b).toString()            
         case '/':
-            return b === 0 ? 'error: divide by zero' : divide(a, b).toString()           
+            return b === 0 ? 'Error: divide by zero' : (a / b).toString()           
     }
 }
-
 
 
 function updateDisplay(str) {
@@ -49,6 +45,7 @@ function updateDisplay(str) {
             
             if (a !== null) { op = str }
             if (str === '=') { op = null }
+            decimal = false
             break
 
         case 'bksp':
@@ -60,12 +57,19 @@ function updateDisplay(str) {
             break
 
         case 'cls':
-            a = null
-            b = null
-            op = null
+            clear()
             break
 
         default:
+            if (str === '.') {
+                if (decimal) {
+                    screen.textContent = 'Error: too many points'
+                    clear()
+                    return
+                } else {
+                    decimal = true
+                }
+            }
             if (op === null) {
                 if (a === null) { a = '' }
                 a += str
@@ -73,11 +77,20 @@ function updateDisplay(str) {
                 if (b === null) { b = '' }
                 b += str
             }
+            str === '.' && decimal
             break
     }
     
     screen.textContent = b === null ? a : b
-    if (a === 'error: divide by zero') { a = null }
+    if (a === 'Error: divide by zero') { clear() }
     console.log(a, b, op)
+}
+
+
+function clear() {
+    a = null
+    b = null
+    op = null
+    decimal = false
 }
 
