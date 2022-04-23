@@ -4,7 +4,7 @@ const btns = document.querySelectorAll('button')
 let a = null
 let b = null
 let op = null
-let decimal = false
+let decimal = 0
 
 
 /*Event listener for all buttons*/
@@ -37,6 +37,12 @@ function updateDisplay(str) {
         case '*':
         case '/':
         case '=':
+            if (decimal > 1) {
+                screen.textContent = 'Error: too many points'
+                clear()
+                return
+            }
+
             /*If a and b exist then any operator acts as '='*/
             if (b !== null) {
                 a = operate(+a, +b, op)
@@ -45,7 +51,7 @@ function updateDisplay(str) {
             
             if (a !== null) { op = str }
             if (str === '=') { op = null }
-            decimal = false
+            decimal = 0
             break
 
         case 'bksp':
@@ -61,15 +67,7 @@ function updateDisplay(str) {
             break
 
         default:
-            if (str === '.') {
-                if (decimal) {
-                    screen.textContent = 'Error: too many points'
-                    clear()
-                    return
-                } else {
-                    decimal = true
-                }
-            }
+            if (str === '.') { decimal += 1 }
             if (op === null) {
                 if (a === null) { a = '' }
                 a += str
@@ -77,7 +75,6 @@ function updateDisplay(str) {
                 if (b === null) { b = '' }
                 b += str
             }
-            str === '.' && decimal
             break
     }
     
@@ -91,6 +88,6 @@ function clear() {
     a = null
     b = null
     op = null
-    decimal = false
+    decimal = 0
 }
 

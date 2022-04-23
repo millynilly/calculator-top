@@ -1,8 +1,8 @@
 
 :root {
-    --sqr: 60px;
-    --gap: 12px;
-    --width: calc(var(--sqr)*4 + var(--gap)*2 + 40px)
+    --sqr: 70px;
+    --gap: 10px;
+    --width: calc(var(--sqr)*4 + var(--gap)*3)
 }
 
 
@@ -26,43 +26,51 @@ button {
 #calculator {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 40px;
     width: var(--width);
     margin: 0 auto;
-    padding: 40px;
-    border: 1px solid black;
+    padding: 4%;
+    border: 1px solid darkgray;
     border-radius: 20px;
+    
 }
 
 #display {
-    width: calc(var(--width) - 32px);
     height: var(--sqr);
     line-height: var(--sqr);
     border: 1px solid black;
     border-radius: 2px;
     padding: 0 16px;
+    align-self: stretch;
+}
+
+#buttons {
+    display: flex;
+    gap: var(--gap);
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+#operators {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
 }
 
 #functions {
     display: flex;
-    justify-content: space-between;
-}
+    gap: var(--gap);
 
-#main {
-    display: flex;
-    gap: 43px;
-    align-items: flex-start;
 }
 
 #numbers {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 10px;
-}
-
-#operators {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    gap: var(--gap);
 }
