@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Red hat mono', sans-serif;
-    font-size: 20px;
+    font-size: 36px;
 }
 
 h1 {
@@ -20,7 +20,9 @@ button {
     width: var(--sqr);
     height: var(--sqr);
     font-family: 'Red hat mono', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
+    color: white;
+    border: none;
 }
 
 #calculator {
@@ -74,3 +76,13 @@ button {
     grid-template-rows: 1fr 1fr 1fr;
     gap: var(--gap);
 }
+
+
+/*Colours*/
+#calculator { background-color: darkslategray}
+#display { background-color: white;}
+#numbers button { background-color: lightgray; color: black; }
+#operators button { background-color: cadetblue; font-size: 36px; }
+#operators #equals { background-color: #ff6d01; }
+#clear { background-color: orangered; }
+#backspace { background-color: orange; }
