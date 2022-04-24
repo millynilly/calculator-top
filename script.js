@@ -22,11 +22,11 @@ window.addEventListener('keyup', e => {
     })
     if (e.key === 'Backspace') {
         e.preventDefault()
-        document.querySelector('#backspace').click()
+        document.querySelector('.backspace').click()
     }
     if (e.key === 'Escape') {
         e.preventDefault()
-        document.querySelector('#clear').click()
+        document.querySelector('.clear').click()
     }
     console.log(e.key)
 })
