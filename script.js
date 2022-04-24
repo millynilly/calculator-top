@@ -7,9 +7,31 @@ let op = null
 let decimal = 0
 
 
-/*Event listener for all buttons*/
+/*Event listener (click) for all buttons*/
 btns.forEach( btn => {
     btn.addEventListener('click', n => updateDisplay(btn.textContent))})
+
+
+/*Event listener (keyboard) for all buttons*/
+window.addEventListener('keyup', e => {
+    btns.forEach( btn => {
+        if (e.key === btn.textContent) {
+            e.preventDefault()
+            btn.click()
+        }
+    })
+    if (e.key === 'Backspace') {
+        e.preventDefault()
+        document.querySelector('#backspace').click()
+    }
+    if (e.key === 'Escape') {
+        e.preventDefault()
+        document.querySelector('#clear').click()
+    }
+    console.log(e.key)
+})
+
+
 
 
 function operate(a, b, operator) {
