@@ -1,4 +1,4 @@
-const screen = document.querySelector('#display')
+const screen = document.querySelector('.display')
 const btns = document.querySelectorAll('button')
 
 let a = null
