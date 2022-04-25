@@ -28,7 +28,6 @@ window.addEventListener('keyup', e => {
         e.preventDefault()
         document.querySelector('.clear').click()
     }
-    console.log(e.key)
 })
 
 
@@ -44,7 +43,7 @@ function operate(a, b, operator) {
         case '*':
             return (a * b).toString()            
         case '/':
-            return b === 0 ? 'Error: divide by zero' : (a / b).toString()           
+            return b === 0 ? '!divide by zero' : (a / b).toString()           
     }
 }
 
@@ -59,12 +58,6 @@ function updateDisplay(str) {
         case '*':
         case '/':
         case '=':
-            if (decimal > 1) {
-                screen.textContent = 'Error: too many points'
-                clear()
-                return
-            }
-
             /*If a and b exist then any operator acts as '='*/
             if (b !== null) {
                 a = operate(+a, +b, op)
@@ -89,7 +82,10 @@ function updateDisplay(str) {
             break
 
         default:
-            if (str === '.') { decimal += 1 }
+            if (str === '.' ) {
+                if (decimal === 1) {return}
+                decimal += 1
+            }
             if (op === null) {
                 if (a === null) { a = '' }
                 a += str
@@ -101,8 +97,7 @@ function updateDisplay(str) {
     }
     
     screen.textContent = b === null ? a : b
-    if (a === 'Error: divide by zero') { clear() }
-    console.log(a, b, op)
+    if (a === '!divide by zero') { clear() }
 }
 
 
